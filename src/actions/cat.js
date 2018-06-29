@@ -1,3 +1,5 @@
+import API_BASE_URL from '../config';
+
 const FETCH_CAT_REQUEST = 'FETCH_CAT_REQUEST';
 const fetchCatRequest = () => {
   return {
@@ -23,7 +25,7 @@ const fetchCatError = (error) => {
 
 export const fetchCat = () => dispatch => {
   dispatch(fetchCatRequest());
-  return fetch('URLGOESHERE/api/cat')
+  return fetch(`${API_BASE_URL}/cat`)
     .then(result =>{
       if (result.ok){
         return result.json();
@@ -36,4 +38,16 @@ export const fetchCat = () => dispatch => {
     .catch(err => {
       dispatch(fetchCatError(err));
     });    
+};
+
+export const adoptCat = () => dispatch => {
+  return fetch(`${API_BASE_URL}/cat`, {
+    method : 'DELETE',
+    headers : {
+      'content-type': 'application/json'
+    }
+  })
+    .then(result => {
+      
+    });
 };
