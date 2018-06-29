@@ -16,7 +16,25 @@ class Pet extends React.Component {
       this.props.dispatch(adoptDog());
     }
   }
-  render() {    
+  render() { 
+    const error = this.props.error;
+    const loading = this.props.loading;
+   
+
+    if (error && error.length) {
+      return (
+        <section>
+          <h2>Error, please refresh</h2>
+        </section>
+      );
+    }
+    else if (loading) {
+      return (
+        <section>
+          <h2>Loading...</h2>
+        </section>
+      );
+    } 
     return (
       <section>
         <header>
@@ -48,12 +66,20 @@ class Pet extends React.Component {
 
 const mapStateToProps = (state, props) => {
   if(props.type === 'cat'){
-    return {animal: state.catReducer.cat}
+    return {
+      animal: state.catReducer.cat,
+      error : state.catReducer.error,
+      loading : state.catReducer.loading
+    };
   } 
   else if(props.type === 'dog'){
-    return {animal: state.dogReducer.dog}
+    return {
+      animal: state.dogReducer.dog,
+      error : state.dogReducer.error,
+      loading : state.dogReducer.loading
+    };
   }
-}
+};
 
 export default connect(mapStateToProps)(Pet);
 
