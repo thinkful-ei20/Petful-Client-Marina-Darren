@@ -2,8 +2,13 @@
 // catToAdopt & dogToAdopt
 
 import React from 'react';
+import Pet from './Pet';
 
 class Dashboard extends React.Component {
+
+  onAdoptClick() {
+    console.log('I go home!');
+  }
 
   render() {
 
@@ -14,46 +19,14 @@ class Dashboard extends React.Component {
         </header>
         <main>
           {/* catToAdopt Section */}
-          <section>
-            <header>
-              <img
-                src={this.props.catToAdopt.imageURL}
-                alt={this.props.catToAdopt.imageDescription}
-              />
-              <h2>{this.props.catToAdopt.name}</h2>
-            </header>
-            <dl>
-              <dt>Sex:</dt>
-              <dd>{this.props.catToAdopt.sex}</dd>
-              <dt>Age:</dt>
-              <dd>{this.props.catToAdopt.age}</dd>
-              <dt>Breed:</dt>
-              <dd>{this.props.catToAdopt.breed}</dd>
-              <dt>Story:</dt>
-              <dd>{this.props.catToAdopt.story}</dd>
-            </dl>
-          </section>
+          <Pet 
+            animal={this.props.catToAdopt}
+            onAdoptClick={this.onAdoptClick} />
 
           {/* dogToAdopt Section */}
-          <section>
-            <header>
-              <img
-                src={this.props.dogToAdopt.imageURL}
-                alt={this.props.dogToAdopt.imageDescription}
-              />
-              <h2>{this.props.dogToAdopt.name}</h2>
-            </header>
-            <dl>
-              <dt>Sex:</dt>
-              <dd>{this.props.dogToAdopt.sex}</dd>
-              <dt>Age:</dt>
-              <dd>{this.props.dogToAdopt.age}</dd>
-              <dt>Breed:</dt>
-              <dd>{this.props.dogToAdopt.breed}</dd>
-              <dt>Story:</dt>
-              <dd>{this.props.dogToAdopt.story}</dd>
-            </dl>
-          </section>
+          <Pet 
+            animal={this.props.dogToAdopt}
+            onAdoptClick={this.onAdoptClick} />
         </main>
       </div>
     );
