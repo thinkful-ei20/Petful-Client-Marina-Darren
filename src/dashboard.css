@@ -1,0 +1,23 @@
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  background: url(https://image.ibb.co/fwBdWd/colorful_1353144_1280.png);
+}
+
+#title {
+  text-align: center;  
+  padding: 10px;
+  font-size: 1.3em;
+  background: url(https://image.ibb.co/cc77Py/animals_47877_640.png);
+  border-bottom: 2px solid rgb(143, 89, 39);
+}
+
+#title p {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  background: rgba(255,255,255,.9);
+  padding: 10px;
+}

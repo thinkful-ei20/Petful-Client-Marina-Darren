@@ -3,6 +3,7 @@ import Pet from './Pet';
 import {connect} from 'react-redux';
 import {fetchCat} from './actions/cat';
 import {fetchDog} from './actions/dog';
+import './dashboard.css';
 
 
 class Dashboard extends React.Component {
@@ -14,7 +15,7 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-        <header role='banner'>
+        <header role='banner' id='title'>
           <h1>Petful</h1>
           <p>We are a first in, first out adoption center. This means
             you can only adopt the pets that have been here the longest!

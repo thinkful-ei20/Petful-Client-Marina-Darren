@@ -4,6 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {adoptCat} from './actions/cat';
 import {adoptDog} from './actions/dog';
+import './pet.css';
 
 
 class Pet extends React.Component {
