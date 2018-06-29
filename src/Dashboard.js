@@ -16,6 +16,11 @@ class Dashboard extends React.Component {
       <div>
         <header role='banner'>
           <h1>Petful</h1>
+          <p>We are a first in, first out adoption center. This means
+            you can only adopt the pets that have been here the longest!
+            Choose between the current cat or dog to provide a loving
+            home to an animal in need. 
+          </p>
         </header>
         <main>
           {/* catToAdopt Section */}
