@@ -1,9 +1,22 @@
 //Receives animal props & onAdoptClick
 
 import React from 'react';
+import {connect} from 'react-redux';
+import {adoptCat} from './actions/cat';
+import {adoptDog} from './actions/dog';
+
 
 class Pet extends React.Component {
-  render() {
+
+  onAdoptClick(){
+    if(this.props.type === 'cat'){
+      this.props.dispatch(adoptCat());
+    }
+    if(this.props.type === 'dog'){
+      this.props.dispatch(adoptDog());
+    }
+  }
+  render() {    
     return (
       <section>
         <header>
@@ -24,7 +37,7 @@ class Pet extends React.Component {
           <dd>{this.props.animal.story}</dd>
         </dl>
         <button 
-          onClick={this.props.onAdoptClick}
+          onClick={() => this.onAdoptClick()}
         >
           Adopt
         </button>
@@ -33,4 +46,14 @@ class Pet extends React.Component {
   }
 }
 
-export default Pet;
+const mapStateToProps = (state, props) => {
+  if(props.type === 'cat'){
+    return {animal: state.catReducer.cat}
+  } 
+  else if(props.type === 'dog'){
+    return {animal: state.dogReducer.dog}
+  }
+}
+
+export default connect(mapStateToProps)(Pet);
+

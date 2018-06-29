@@ -2,10 +2,13 @@ import React from 'react';
 import Pet from './Pet';
 import {connect} from 'react-redux';
 import {fetchCat} from './actions/cat';
+import {fetchDog} from './actions/dog';
+
 
 class Dashboard extends React.Component {
   componentDidMount(){
     this.props.dispatch(fetchCat());
+    this.props.dispatch(fetchDog());
   }
   render() {
 
@@ -16,10 +19,10 @@ class Dashboard extends React.Component {
         </header>
         <main>
           {/* catToAdopt Section */}
-          {/* <Pet type='cat'/> */}
+          <Pet type='cat'/>
 
           {/* dogToAdopt Section */}
-          {/* <Pet type='dog' /> */}
+          <Pet type='dog' />
         </main>
       </div>
     );
