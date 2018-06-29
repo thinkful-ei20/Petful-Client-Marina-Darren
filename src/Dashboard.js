@@ -1,15 +1,12 @@
-//Takes two props - 
-// catToAdopt & dogToAdopt
-
 import React from 'react';
 import Pet from './Pet';
+import {connect} from 'react-redux';
+import {fetchCat} from './actions/cat';
 
 class Dashboard extends React.Component {
-
-  onAdoptClick() {
-    console.log('I go home!');
+  componentDidMount(){
+    this.props.dispatch(fetchCat());
   }
-
   render() {
 
     return (
@@ -19,14 +16,10 @@ class Dashboard extends React.Component {
         </header>
         <main>
           {/* catToAdopt Section */}
-          <Pet 
-            animal={this.props.catToAdopt}
-            onAdoptClick={this.onAdoptClick} />
+          {/* <Pet type='cat'/> */}
 
           {/* dogToAdopt Section */}
-          <Pet 
-            animal={this.props.dogToAdopt}
-            onAdoptClick={this.onAdoptClick} />
+          {/* <Pet type='dog' /> */}
         </main>
       </div>
     );
@@ -34,4 +27,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default connect()(Dashboard);

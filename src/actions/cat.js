@@ -1,22 +1,22 @@
 import API_BASE_URL from '../config';
 
-const FETCH_CAT_REQUEST = 'FETCH_CAT_REQUEST';
-const fetchCatRequest = () => {
+export const FETCH_CAT_REQUEST = 'FETCH_CAT_REQUEST';
+export const fetchCatRequest = () => {
   return {
     type : FETCH_CAT_REQUEST
   };  
 };
 
-const FETCH_CAT_SUCCESS = 'FETCH_CAT_SUCCESS';
-const fetchCatSuccess = (data) =>{
+export const FETCH_CAT_SUCCESS = 'FETCH_CAT_SUCCESS';
+export const fetchCatSuccess = (data) =>{
   return {
     type : FETCH_CAT_SUCCESS,
     data
   };
 };
 
-const FETCH_CAT_ERROR = 'FETCH_CAT_ERROR';
-const fetchCatError = (error) => {
+export const FETCH_CAT_ERROR = 'FETCH_CAT_ERROR';
+export const fetchCatError = (error) => {
   return {
     type : FETCH_CAT_ERROR,
     error
@@ -48,6 +48,12 @@ export const adoptCat = () => dispatch => {
     }
   })
     .then(result => {
-      
+      if (result.ok){
+        dispatch(fetchCat());
+      }
+      throw new Error(result);
+    })
+    .catch(err => {
+      dispatch(fetchCatError(err));
     });
 };
